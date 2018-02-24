@@ -1,0 +1,38 @@
+{
+	"manifest_version" : 2,
+	"name" : "SendNotifications",
+	"version" : "1",
+	"description" : "A sms notification service for easyship users",
+	"icons" : {
+       "128": "icon128.png",
+       "48" : "icon48.png",
+       "16" : "icon16.png"
+	},
+	"page_action":{
+		"default_icon":"icon16.png",
+		"default_popup":"popup.html",
+		"default_title":"SendNotifications"
+	},
+	"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+	"permissions":[
+    "storage",
+    "notifications",
+    "contextMenus",
+    "tabs",
+    "https://app.easyship.com/*"
+	],
+	"background":{
+		"scripts":["eventPage.js"],
+		"persistent":false
+
+	},
+	"content_scripts":[
+    {
+         "matches" : ["<all_urls>"],
+         "js" : ["jquery-3.2.1.min.js","content.js"],
+         "css" : ["content.css"]
+    }
+    ]
+	
+	
+}
